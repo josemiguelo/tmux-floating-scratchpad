@@ -7,11 +7,15 @@
       `@floating_scratch_to_active_win`, `@floating_active_pane_to_scratch`).
 -   added `@floating_scratch_width` / `@floating_scratch_height` options for the popup
       size, replacing the previous hardcoded 70%x70%.
--   fixed: `#{session_name}` evaluated to empty when referenced directly inside
-      `popup`'s `-E` shell-command text (the popup's own pane has no owning session
-      at that point), producing a single shared `floating-` session for everyone.
-      Now passed in via `-e` as an environment variable instead, which is expanded
-      in the invoking pane's context like `-d` already was.
+-   fixed: session-scoped formats (`#{session_name}`) evaluate to empty when
+      referenced anywhere in `popup`'s own argument parsing, including `-e`, not
+      just the shell-command text (the popup's own pane has no owning session at
+      that point), producing a single shared `floating-` session for everyone.
+      Now captured into a global option via `set -gF` in the invoking pane's
+      context (same pattern upstream already used for `@last_session_name`, for
+      the same reason) and read back inside the popup with a plain `tmux show -gv`
+      call, which is genuine runtime shell execution rather than tmux format
+      expansion.
 
 [v1.1.0] 2025-5-18
 -------------------
