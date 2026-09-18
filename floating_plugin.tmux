@@ -16,7 +16,7 @@ set_floating_scratch_term_binding() {
 			tmux bind-key "$key" "if-shell -F '#{m:floating-*,#S}' {
 				detach-client
 			} {
-				popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E 'tmux new -A -s floating-#{session_name}'
+				popup -d '#{pane_current_path}' -e 'FLOATING_PARENT_SESSION=#{session_name}' -xC -yC -w$width -h$height -E 'tmux new -A -s floating-\$FLOATING_PARENT_SESSION'
 			}"
 	done
 }

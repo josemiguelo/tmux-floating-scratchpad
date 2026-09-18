@@ -7,6 +7,11 @@
       `@floating_scratch_to_active_win`, `@floating_active_pane_to_scratch`).
 -   added `@floating_scratch_width` / `@floating_scratch_height` options for the popup
       size, replacing the previous hardcoded 70%x70%.
+-   fixed: `#{session_name}` evaluated to empty when referenced directly inside
+      `popup`'s `-E` shell-command text (the popup's own pane has no owning session
+      at that point), producing a single shared `floating-` session for everyone.
+      Now passed in via `-e` as an environment variable instead, which is expanded
+      in the invoking pane's context like `-d` already was.
 
 [v1.1.0] 2025-5-18
 -------------------
