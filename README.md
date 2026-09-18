@@ -66,6 +66,9 @@ any other session. Toggling the binding while inside a scratch session detaches 
 pressing it again from a different session opens (or returns to) that session's own
 scratch terminal.
 
+Closing a session automatically kills its now-orphaned scratch session too, so you
+won't accumulate detached `floating-*` sessions over time.
+
 ## Inspiration / Influence
 
 * [u/kevinhwang91](https://www.reddit.com/r/tmux/comments/itonec/comment/g5jxke4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)

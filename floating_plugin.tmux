@@ -22,7 +22,12 @@ set_floating_scratch_term_binding() {
 	done
 }
 
+set_floating_reap_hook() {
+	tmux set-hook -g session-closed "run-shell -b '$CURRENT_DIR/scripts/reap_orphans.sh'"
+}
+
 main() {
 	set_floating_scratch_term_binding
+	set_floating_reap_hook
 }
 main
