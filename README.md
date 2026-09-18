@@ -69,6 +69,20 @@ scratch terminal.
 Closing a session automatically kills its now-orphaned scratch session too, so you
 won't accumulate detached `floating-*` sessions over time.
 
+## Session cycling
+
+tmux's default prefix <kbd>(</kbd> / <kbd>)</kbd> walks every session on the
+server, including each `floating-<session_name>` scratch session. This plugin
+does not rebind those keys.
+
+To skip them, filter names matching `^floating-` before calling
+`switch-client`. A working example lives in these dotfiles:
+
+- [`tmux-session-cycle`](https://github.com/josemiguelo/.dotfiles/blob/master/private_dot_local/bin/executable_tmux-session-cycle)
+- [the `(`/`)` bindings](https://github.com/josemiguelo/.dotfiles/blob/master/private_dot_config/tmux/tmux.conf.tmpl)
+
+`tmux-attach` in that repo also hides `floating-*` sessions from the picker.
+
 ## Inspiration / Influence
 
 * [u/kevinhwang91](https://www.reddit.com/r/tmux/comments/itonec/comment/g5jxke4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)

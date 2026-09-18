@@ -20,6 +20,8 @@
       longer exists) are now automatically killed via a `session-closed` hook, so
       closing a session cleans up its scratch terminal instead of leaving it
       detached forever.
+-   documented that prefix `(`/`)` still walk scratch sessions, with a pointer
+      to a filter that skips `floating-*` names.
 
 [v1.1.0] 2025-5-18
 -------------------
