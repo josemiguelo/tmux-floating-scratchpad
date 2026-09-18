@@ -2,6 +2,13 @@
 
 Some times you need a scratch terminal. tmux-floating-terminal will quickly load a floating pane with a new tmux session. This floating pane can be detached and reattached.
 
+This is a fork of [lloydbond/tmux-floating-terminal](https://github.com/lloydbond/tmux-floating-terminal)
+that scopes the scratch terminal to each tmux session instead of sharing one global
+`floating` session across the whole server. Switching to another session opens (or
+returns to) *that* session's own scratch terminal — `floating-<session_name>` — with
+independent windows and state. The convert-scratch-to-window bindings from upstream
+were dropped in this fork.
+
 ## Requirements
 
 * [tmux](https://github.com/tmux/tmux) >= 3.2
@@ -20,13 +27,12 @@ Some times you need a scratch terminal. tmux-floating-terminal will quickly load
 Add plugin to the list of TPM plugins in `~/.tmux.conf`:
 
 ```
-set -g @plugin 'lloydbond/tmux-floating-terminal'
+set -g @plugin 'josemiguelo/tmux-floating-terminal'
 
 <optional>
 set -g @floating_scratch_term 'M-i'
-set -g @floating_scratch_to_active_win 'M-h'
-set -g @floating_scratch_to_win 'M-l'
-set -g @floating_active_pane_to_scratch 'M-m'
+set -g @floating_scratch_width '70%'
+set -g @floating_scratch_height '70%'
 
 ```
 Hit <kbd>tmux-prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You should now be able to use the plugin.
@@ -36,7 +42,7 @@ Hit <kbd>tmux-prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You
 Clone the repository:
 
 ```
-git clone https://github.com/lloydbond/tmux-floating-terminal.git ~/.tmux-floating-terminal
+git clone https://github.com/josemiguelo/tmux-floating-terminal.git ~/.tmux-floating-terminal
 ```
 Add the following to `.tmux.conf`:
 
@@ -53,10 +59,12 @@ tmux source-file ~/.tmux.conf
 ## Usage
 
 * Open/Close scratch terminal <kbd>tmux-prefix</kbd> <kbd>alt</kbd> + <kbd>i</kbd>
-* Convert scratch terminal to active window <kbd>tmux-prefix></kbd> <kbd>alt</kbd> + <kbd>h</kbd>
-* Convert scratch terminal to next-window <kbd>tmux-prefix></kbd> <kbd>alt</kbd> + <kbd>l</kbd>
-* Convert convert current pane into popup scratech <kbd>tmux-prefix></kbd> <kbd>alt</kbd> + <kbd>m</kbd>
-  - Note: scratch popup must be unused for now. Will improve funcitonality to play fairly in the future.
+
+The scratch terminal is a real tmux session named `floating-<session_name>`, so you can
+create additional windows inside it (e.g. <kbd>tmux-prefix</kbd> + <kbd>c</kbd>) like
+any other session. Toggling the binding while inside a scratch session detaches it;
+pressing it again from a different session opens (or returns to) that session's own
+scratch terminal.
 
 ## Inspiration / Influence
 

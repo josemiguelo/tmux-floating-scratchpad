@@ -1,3 +1,13 @@
+[fork] 2026-09-18
+-------------------
+
+-   scratch terminal is now scoped per-session (`floating-<session_name>`) instead of
+      one global `floating` session shared across the tmux server.
+-   dropped the convert-to-window bindings (`@floating_scratch_to_win`,
+      `@floating_scratch_to_active_win`, `@floating_active_pane_to_scratch`).
+-   added `@floating_scratch_width` / `@floating_scratch_height` options for the popup
+      size, replacing the previous hardcoded 70%x70%.
+
 [v1.1.0] 2025-5-18
 -------------------
 
