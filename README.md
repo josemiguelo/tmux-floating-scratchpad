@@ -1,6 +1,6 @@
-# tmux-floating-terminal
+# tmux-floating-scratchpad
 
-Some times you need a scratch terminal. tmux-floating-terminal will quickly load a floating pane with a new tmux session. This floating pane can be detached and reattached.
+Some times you need a scratch terminal. tmux-floating-scratchpad will quickly load a floating pane with a new tmux session. This floating pane can be detached and reattached.
 
 This is a fork of [lloydbond/tmux-floating-terminal](https://github.com/lloydbond/tmux-floating-terminal)
 that scopes the scratch terminal to each tmux session instead of sharing one global
@@ -27,7 +27,7 @@ were dropped in this fork.
 Add plugin to the list of TPM plugins in `~/.tmux.conf`:
 
 ```
-set -g @plugin 'josemiguelo/tmux-floating-terminal'
+set -g @plugin 'josemiguelo/tmux-floating-scratchpad'
 
 <optional>
 set -g @floating_scratch_term 'M-i'
@@ -42,12 +42,12 @@ Hit <kbd>tmux-prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You
 Clone the repository:
 
 ```
-git clone https://github.com/josemiguelo/tmux-floating-terminal.git ~/.tmux-floating-terminal
+git clone https://github.com/josemiguelo/tmux-floating-scratchpad.git ~/.tmux-floating-scratchpad
 ```
 Add the following to `.tmux.conf`:
 
 ```
-run-shell ~/.tmux-floating-terminal/floating_plugin.tmux
+run-shell ~/.tmux-floating-scratchpad/floating_plugin.tmux
 ```
 
 Reload tmux:
