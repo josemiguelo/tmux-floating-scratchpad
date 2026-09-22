@@ -33,6 +33,7 @@ set -g @plugin 'josemiguelo/tmux-floating-scratchpad'
 set -g @floating_scratch_term 'M-i'
 set -g @floating_scratch_width '70%'
 set -g @floating_scratch_height '70%'
+set -g @floating_last_session 'L'
 
 ```
 Hit <kbd>tmux-prefix</kbd> + <kbd>I</kbd> to fetch the plugin and source it. You should now be able to use the plugin.
@@ -68,6 +69,12 @@ scratch terminal.
 
 Closing a session automatically kills its now-orphaned scratch session too, so you
 won't accumulate detached `floating-*` sessions over time.
+
+From inside a scratch session, <kbd>tmux-prefix</kbd> <kbd>L</kbd> (tmux's normal
+"last session" key) jumps the client that opened the popup to *its* last session and
+closes the popup, instead of trying (and failing) to switch the scratch session's own,
+mostly nonexistent session history. Outside a scratch session it's unchanged — plain
+`switch-client -l`.
 
 ## Session cycling
 

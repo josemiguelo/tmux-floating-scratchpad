@@ -22,6 +22,13 @@
       detached forever.
 -   documented that prefix `(`/`)` still walk scratch sessions, with a pointer
       to a filter that skips `floating-*` names.
+-   added `@floating_last_session` (default `L`): from inside a scratch session,
+      jumps the client that opened the popup to its own last session and closes
+      the popup, instead of running `switch-client -l` on the scratch session's
+      own client (which has essentially no session history of its own). Needed
+      `run-shell` + a plain `tmux show -gv` call to read back the captured
+      client id — `-c '#{@user_option}'` does not format-expand the way target
+      arguments backed by builtin formats do.
 
 [v1.1.0] 2025-5-18
 -------------------
