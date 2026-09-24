@@ -19,7 +19,7 @@ set_floating_scratch_term_binding() {
 			} {
 				set -gF '@floating_target_session' '#{session_name}'
 				set -gF '@floating_target_client' '#{client_name}'
-				popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E 'tmux new -A -s floating-\$(tmux show -gv @floating_target_session)'
+				popup -d '#{pane_current_path}' -xC -yC -w$width -h$height -E 'tmux new -A -s \"floating-\$(tmux show -gv @floating_target_session)\"'
 			}"
 	done
 }
